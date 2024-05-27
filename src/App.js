@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+// Importing the necessary files
+import './App.css'; // Importing the CSS file for styling
+import CountryInformation from './components/CountryInformation'; // Importing the CountryInformation component from the components directory
 
+// Defining the main functional component named App
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // Returning JSX (JavaScript XML) which represents the UI of the component
+    return (
+        <div className="App"> {/* Creating a div with class name "App" */}
+            <CountryInformation /> {/* Rendering the CountryInformation component */}
+        </div>
+    );
 }
 
+// Exporting the App component as the default export of this file
 export default App;

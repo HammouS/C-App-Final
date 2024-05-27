@@ -1,0 +1,93 @@
+/* CountryInformation.css */
+
+/* Styling the body element */
+/* CountryInformation.css */
+
+/* Styling the body element with a background image */
+body {
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    min-height: 100vh; /* Set minimum height to fill the viewport */
+    display: flex; /* Use flexbox layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    font-family: 'Noto Sans Mono', monospace; /* Set font family */
+    background: url('/public/dark-world-map-jxx5yrifoiq0t3u6.jpg') no-repeat center center fixed; /* Add background image */
+    background-size: cover; /* Cover the entire area */
+    background-color: #f2f5f1; /* Fallback background color */
+}
+
+/* Styling a container element */
+.container {
+    max-width: 650px; /* Maximum width of the container */
+    margin: 5px; /* Small margin around the container */
+    width: calc(100% - 10px); /* Adjust width to be full width minus margin */
+    padding: 30px; /* Padding inside the container */
+    border-radius: 10px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    box-shadow: 6px 10px 17px -8px rgba(0,0,0,0.57); /* Subtle shadow for a raised effect */
+}
+
+
+/* Styling input elements */
+input {
+    padding: 10px; /* Padding inside the input */
+    border: 1px solid #ced4da; /* Light gray border */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove default outline */
+    font-size: 15px; /* Font size */
+    width: calc(100% - 125px); /* Adjust width to be full width minus 125px */
+}
+
+/* Styling the search button */
+#search-btn {
+    padding: 10px 20px; /* Padding inside the button */
+    outline: none; /* Remove default outline */
+    border: 1px solid #ced4da; /* Light gray border */
+    margin: 5px; /* Small margin around the button */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    background: #1d9bf0; /* Blue background color */
+    color: #fff; /* White text color */
+    font-size: 16px; /* Font size */
+    transition: all 0.5s; /* Smooth transition for all properties */
+}
+
+/* Change background color on hover */
+#search-btn:hover {
+    background-color: #1879ba; /* Darker blue background on hover */
+}
+
+/* Styling images within the result element */
+#result img {
+    width: 298px; /* Fixed width for the image */
+    margin-top: 10px; /* Margin above the image */
+    height: 200px; /* Fixed height for the image */
+    border: 1px solid #ced4da; /* Light gray border */
+}
+
+/* Styling h2 elements within the result element */
+#result h2 {
+    margin-top: 0; /* Remove top margin */
+}
+
+/* Styling rows of data */
+.dataRow {
+    text-align: left; /* Align text to the left */
+}
+
+/* Styling h4 elements within data rows */
+.dataRow h4 {
+    margin: 0; /* Remove margin */
+    font-size: 15px; /* Font size */
+}
+
+/* Styling span elements within data rows */
+.dataRow span {
+    display: block; /* Display as block element */
+    margin-bottom: 10px; /* Margin below the span */
+    font-size: 13px; /* Font size */
+    max-width: 300px; /* Maximum width */
+}
