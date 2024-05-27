@@ -24,12 +24,19 @@ function TouristLocations({ locations }) {
         <div>
             <h2>Tourist Locations</h2>
             <ul style={{ padding: 0, listStyle: 'none' }}>
-                {uniqueLocations.map((location, index) => (
-                    <li key={index} style={{ marginBottom: '10px', overflowWrap: 'break-word', wordWrap: 'break-word' }}>
-                        <h3 style={{ margin: 0 }}>{location.properties.name}</h3>
-                        <p style={{ margin: 0 }}>{location.properties.kinds.split(',').join(', ')}</p>
-                    </li>
-                ))}
+                {uniqueLocations.map((location, index) => {
+                    const { name, kinds, wikidata } = location.properties;
+                    const [longitude, latitude] = location.geometry.coordinates;
+                    const mapLink = `https://www.google.com/maps?q=${latitude},${longitude}`;
+
+                    return (
+                        <li key={index} style={{ marginBottom: '10px', overflowWrap: 'break-word', wordWrap: 'break-word' }}>
+                            <h3 style={{ margin: 0 }}>{name}</h3>
+                            <p style={{ margin: 0 }}>{kinds.split(',').join(', ')}</p>
+                            <a href={mapLink} target="_blank" rel="noopener noreferrer">View on Map</a>
+                        </li>
+                    );
+                })}
             </ul>
         </div>
     );
@@ -41,6 +48,10 @@ TouristLocations.propTypes = {
         properties: PropTypes.shape({
             name: PropTypes.string.isRequired,
             kinds: PropTypes.string.isRequired,
+            wikidata: PropTypes.string,
+        }).isRequired,
+        geometry: PropTypes.shape({
+            coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
         }).isRequired,
     })).isRequired,
 };

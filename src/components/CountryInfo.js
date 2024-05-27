@@ -2,6 +2,9 @@ import React from 'react'; // Import React library
 import PropTypes from 'prop-types'; // Import PropTypes library
 
 function CountryInfo({ countryData }) { // Define functional component CountryInfo and destructure countryData from props
+    const countryLatLng = countryData.capitalInfo.latlng; // Get latitude and longitude for the country
+    const countryMapLink = `https://www.google.com/maps?q=${countryLatLng[0]},${countryLatLng[1]}`; // Construct Google Maps link
+
     return (
         <div>
             {/* Display the country flag */}
@@ -74,7 +77,7 @@ function CountryInfo({ countryData }) { // Define functional component CountryIn
             <div className="row">
                 <div className="dataRow">
                     <h4>Capital Latitudes and Longitudes:</h4>
-                    <span>{countryData.capitalInfo.latlng[0]} {countryData.capitalInfo.latlng[1]}</span>
+                    <span>{countryLatLng[0]} {countryLatLng[1]}</span>
                 </div>
             </div>
             {/* Display the timezones */}
@@ -83,6 +86,15 @@ function CountryInfo({ countryData }) { // Define functional component CountryIn
                     <h4>TimeZones:</h4>
                     <span>
                         {countryData.timezones.join(', ')}
+                    </span>
+                </div>
+            </div>
+            {/* Display a link to the country's location on Google Maps */}
+            <div className="row">
+                <div className="dataRow">
+                    <h4>View on Map:</h4>
+                    <span>
+                        <a href={countryMapLink} target="_blank" rel="noopener noreferrer">Google Maps</a>
                     </span>
                 </div>
             </div>

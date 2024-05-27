@@ -15,59 +15,63 @@ function CountryInformation() {
     const [error, setError] = useState(''); 
 
     // Function to handle search button click
-    const handleSearch = () => { 
-        // If input field is empty, set error message and reset country data
-        if (!countryName) { 
-            setError('The input field cannot be empty'); 
-            setCountryData(null); 
-            return; 
-        } 
+const handleSearch = () => { 
+    // If input field is empty, set error message and reset country data
+    if (!countryName) { 
+        setError('The input field cannot be empty'); 
+        setCountryData(null); 
+        setTouristLocations([]); // Reset tourist locations
+        return; 
+    } 
 
-        // Constructing the URL for fetching country data
-        const finalURL = `https://restcountries.com/v3.1/name/${countryName.trim()}?fullText=true`; 
-        fetch(finalURL) // Fetching data from the URL
-            .then((response) => response.json()) // Parsing the JSON response
-            .then((data) => { // Handling the fetched data
-                // If country information is not found, set error message and reset country data
-                if(data.message === "Not Found"){ 
-                    setError("Country Information is not Found"); 
-                    setCountryData(null); 
-                }
-                // If no countries are found for the entered name, set error message and reset country data
-                else if (data.length === 0) { 
-                    setError('Please enter a valid country name.'); 
-                    setCountryData(null); 
-                } 
-                // If country data is found, reset error message and set country data
-                else { 
-                    setError(''); 
-                    setCountryData(data[0]); 
-
-                    // Fetch tourist locations for the country
-                    const touristURL = `https://api.opentripmap.com/0.1/en/places/geoname?name=${data[0].capital[0]}&apikey=${OPEN_TRIP_MAP_API_KEY}`;
-                    fetch(touristURL)
-                        .then((response) => response.json())
-                        .then((geonameData) => {
-                            const { lat, lon } = geonameData;
-                            const attractionsURL = `https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon=${lon}&lat=${lat}&apikey=${OPEN_TRIP_MAP_API_KEY}`;
-                            return fetch(attractionsURL);
-                        })
-                        .then((response) => response.json())
-                        .then((attractionsData) => {
-                            setTouristLocations(attractionsData.features); // Assuming the API returns a features array
-                        })
-                        .catch(() => {
-                            setError('An error occurred while fetching tourist locations.');
-                            setTouristLocations([]);
-                        });
-                } 
-            }) 
-            // Catching any errors that occur during fetching
-            .catch(() => { 
-                setError('An error occurred while fetching data.'); 
+    // Constructing the URL for fetching country data
+    const finalURL = `https://restcountries.com/v3.1/name/${countryName.trim()}?fullText=true`; 
+    fetch(finalURL) // Fetching data from the URL
+        .then((response) => response.json()) // Parsing the JSON response
+        .then((data) => { // Handling the fetched data
+            // If country information is not found, set error message and reset country data
+            if(data.message === "Not Found"){ 
+                setError("Country Information is not Found"); 
                 setCountryData(null); 
-            }); 
-    }; 
+                setTouristLocations([]); // Reset tourist locations
+            }
+            // If no countries are found for the entered name, set error message and reset country data
+            else if (data.length === 0) { 
+                setError('Please enter a valid country name.'); 
+                setCountryData(null); 
+                setTouristLocations([]); // Reset tourist locations
+            } 
+            // If country data is found, reset error message and set country data
+            else { 
+                setError(''); 
+                setCountryData(data[0]); 
+
+                // Fetch tourist locations for the country
+                const touristURL = `https://api.opentripmap.com/0.1/en/places/geoname?name=${data[0].capital[0]}&apikey=${OPEN_TRIP_MAP_API_KEY}`;
+                fetch(touristURL)
+                    .then((response) => response.json())
+                    .then((geonameData) => {
+                        const { lat, lon } = geonameData;
+                        const attractionsURL = `https://api.opentripmap.com/0.1/en/places/radius?radius=10000&lon=${lon}&lat=${lat}&apikey=${OPEN_TRIP_MAP_API_KEY}`;
+                        return fetch(attractionsURL);
+                    })
+                    .then((response) => response.json())
+                    .then((attractionsData) => {
+                        setTouristLocations(attractionsData.features); // Assuming the API returns a features array
+                    })
+                    .catch(() => {
+                        setError('An error occurred while fetching tourist locations.');
+                        setTouristLocations([]); // Reset tourist locations
+                    });
+            } 
+        }) 
+        // Catching any errors that occur during fetching
+        .catch(() => { 
+            setError('An error occurred while fetching data.'); 
+            setCountryData(null); 
+            setTouristLocations([]); // Reset tourist locations
+        }); 
+};  
 
     // Rendering the component
     return ( 
