@@ -1,8 +1,3 @@
-/* CountryInformation.css */
-
-/* Styling the body element */
-/* CountryInformation.css */
-
 /* Styling the body element with a background image */
 body {
     padding: 0; /* Remove default padding */
@@ -13,7 +8,7 @@ body {
     justify-content: center; /* Center content horizontally */
     align-items: center; /* Center content vertically */
     font-family: 'Noto Sans Mono', monospace; /* Set font family */
-    background: url('/public/dark-world-map-jxx5yrifoiq0t3u6.jpg') no-repeat center center fixed; /* Add background image */
+    background: url('/public/1333028.png') no-repeat center center fixed; /* Add background image */
     background-size: cover; /* Cover the entire area */
     background-color: #f2f5f1; /* Fallback background color */
 }
@@ -26,10 +21,11 @@ body {
     padding: 30px; /* Padding inside the container */
     border-radius: 10px; /* Rounded corners */
     box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    background: rgba(166, 197, 166, 0.8); /* Semi-transparent white background */
     box-shadow: 6px 10px 17px -8px rgba(0,0,0,0.57); /* Subtle shadow for a raised effect */
+    overflow-wrap: break-word; /* Ensure text wraps within the container */
+    word-wrap: break-word; /* Ensure text wraps within the container */
 }
-
 
 /* Styling input elements */
 input {
@@ -49,7 +45,7 @@ input {
     margin: 5px; /* Small margin around the button */
     border-radius: 4px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor on hover */
-    background: #1d9bf0; /* Blue background color */
+    background: #117703; /* Blue background color */
     color: #fff; /* White text color */
     font-size: 16px; /* Font size */
     transition: all 0.5s; /* Smooth transition for all properties */
@@ -90,4 +86,6 @@ input {
     margin-bottom: 10px; /* Margin below the span */
     font-size: 13px; /* Font size */
     max-width: 300px; /* Maximum width */
+    overflow-wrap: break-word; /* Ensure text wraps within the span */
+    word-wrap: break-word; /* Ensure text wraps within the span */
 }
