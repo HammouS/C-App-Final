@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import './App.css';
 import CountryInformation from './components/CountryInformation';
 
+// Main application component
 function App() {
     const [showLinks, setShowLinks] = useState(false);
-    const countries = ['USA', 'UK', 'Spain', 'Japan', 'Italy', 'India', 'Germany', 'France', 'Canada', 'Australia']; // List of countries
+    const countries = ['USA', 'UK', 'Spain', 'Japan', 'Italy', 'India', 'Germany', 'France', 'Canada', 'Australia'];
 
     // Sort the countries alphabetically
     const sortedCountries = countries.sort((a, b) => a.localeCompare(b));
@@ -25,9 +26,5 @@ function App() {
         </div>
     );
 }
-
-
-
-
 
 export default App;

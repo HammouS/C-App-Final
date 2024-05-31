@@ -3,7 +3,7 @@
   top: 20px;
   right: 20px;
   display: flex;
-  flex-direction: column; /* Display links vertically */
+  flex-direction: column;
 }
 
 .toggle-button {
@@ -23,7 +23,7 @@
 
 .nav-links {
   display: flex;
-  flex-direction: column; /* Display links vertically */
+  flex-direction: column;
 }
 
 .nav-link {

@@ -1,5 +1,5 @@
-import React from 'react'; // Importing React
-import PropTypes from 'prop-types'; // Importing PropTypes for type checking
+import React from 'react';
+import PropTypes from 'prop-types';
 
 // Function to remove duplicate tourist locations
 const removeDuplicates = (locations) => {
@@ -56,5 +56,4 @@ TouristLocations.propTypes = {
     })).isRequired,
 };
 
-// Exporting the component
 export default TouristLocations;

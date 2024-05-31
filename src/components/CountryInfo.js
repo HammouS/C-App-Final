@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Component to display country information
 function CountryInfo({ countryData }) {
     const countryLatLng = countryData.capitalInfo.latlng;
     const countryMapLink = `https://www.google.com/maps?q=${countryLatLng[0]},${countryLatLng[1]}`;
@@ -61,6 +62,7 @@ function CountryInfo({ countryData }) {
     );
 }
 
+// Define prop types for CountryInfo component
 CountryInfo.propTypes = {
     countryData: PropTypes.object.isRequired,
 };

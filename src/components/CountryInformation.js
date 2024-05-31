@@ -5,19 +5,17 @@ import CountryInfo from './CountryInfo';
 import TouristLocations from './TouristLocation';
 import PropTypes from 'prop-types';
 
-const OPEN_TRIP_MAP_API_KEY = '5ae2e3f221c38a28845f05b60d6234dd138db79959e6be6cc1d1e495';
+const OPEN_TRIP_MAP_API_KEY = '5ae2e3f221c38a28845f05b60d6234dd138db79959e6be6cc1d1e495'; 
 
-
+// Main component to fetch and display country information
 function CountryInformation() {
     const [countryName, setCountryName] = useState('');
     const [countryData, setCountryData] = useState(null);
     const [touristLocations, setTouristLocations] = useState([]);
     const [error, setError] = useState('');
 
-    
-
     useEffect(() => {
-        
+        // Get country name from URL parameters if available
         const params = new URLSearchParams(window.location.search);
         const country = params.get('country');
         if (country) {
@@ -51,6 +49,7 @@ function CountryInformation() {
                     setError('');
                     setCountryData(data[0]);
 
+                    // Fetch tourist locations based on the country's capital city
                     const touristURL = `https://api.opentripmap.com/0.1/en/places/geoname?name=${data[0].capital[0]}&apikey=${OPEN_TRIP_MAP_API_KEY}`;
                     console.log(`Fetching geoname data from: ${touristURL}`);
                     fetch(touristURL)
@@ -99,7 +98,6 @@ function CountryInformation() {
             setTouristLocations([]);
             return;
         }
-
         fetchCountryData(countryName);
     };
 
@@ -131,13 +129,9 @@ function CountryInformation() {
     );
 }
 
-CountryInfo.propTypes = {
-    countryData: PropTypes.object.isRequired,
+// Define prop types for CountryInformation component
+CountryInformation.propTypes = {
+    setShowLinks: PropTypes.func.isRequired,
 };
-
-TouristLocations.propTypes = {
-    locations: PropTypes.array.isRequired,
-};
-
 
 export default CountryInformation;
