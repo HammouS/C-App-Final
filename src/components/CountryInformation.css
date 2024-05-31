@@ -1,91 +1,118 @@
-/* Styling the body element with a background image */
 body {
-    padding: 0; /* Remove default padding */
-    margin: 0; /* Remove default margin */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    min-height: 100vh; /* Set minimum height to fill the viewport */
-    display: flex; /* Use flexbox layout */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    font-family: 'Noto Sans Mono', monospace; /* Set font family */
-    background: url('/public/1333028.png') no-repeat center center fixed; /* Add background image */
-    background-size: cover; /* Cover the entire area */
-    background-color: #f2f5f1; /* Fallback background color */
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Noto Sans Mono', monospace;
+    background: url('/public/1333028.png') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #f2f5f1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Styling a container element */
 .container {
-    max-width: 650px; /* Maximum width of the container */
-    margin: 5px; /* Small margin around the container */
-    width: calc(100% - 10px); /* Adjust width to be full width minus margin */
-    padding: 30px; /* Padding inside the container */
-    border-radius: 10px; /* Rounded corners */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
-    background: rgba(166, 197, 166, 0.8); /* Semi-transparent white background */
-    box-shadow: 6px 10px 17px -8px rgba(0,0,0,0.57); /* Subtle shadow for a raised effect */
-    overflow-wrap: break-word; /* Ensure text wraps within the container */
-    word-wrap: break-word; /* Ensure text wraps within the container */
+    max-width: 650px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Styling input elements */
+.search {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
 input {
-    padding: 10px; /* Padding inside the input */
-    border: 1px solid #ced4da; /* Light gray border */
-    border-radius: 5px; /* Rounded corners */
-    outline: none; /* Remove default outline */
-    font-size: 15px; /* Font size */
-    width: calc(100% - 125px); /* Adjust width to be full width minus 125px */
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    width: 70%;
+    margin-right: 10px;
 }
 
-/* Styling the search button */
 #search-btn {
-    padding: 10px 20px; /* Padding inside the button */
-    outline: none; /* Remove default outline */
-    border: 1px solid #ced4da; /* Light gray border */
-    margin: 5px; /* Small margin around the button */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    background: #117703; /* Blue background color */
-    color: #fff; /* White text color */
-    font-size: 16px; /* Font size */
-    transition: all 0.5s; /* Smooth transition for all properties */
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #117703;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
-/* Change background color on hover */
 #search-btn:hover {
-    background-color: #1879ba; /* Darker blue background on hover */
+    background-color: #0d5800;
 }
 
-/* Styling images within the result element */
-#result img {
-    width: 298px; /* Fixed width for the image */
-    margin-top: 10px; /* Margin above the image */
-    height: 200px; /* Fixed height for the image */
-    border: 1px solid #ced4da; /* Light gray border */
-}
-
-/* Styling h2 elements within the result element */
 #result h2 {
-    margin-top: 0; /* Remove top margin */
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
 }
 
-/* Styling rows of data */
+.error {
+    color: red;
+    margin-top: 20px;
+}
+
 .dataRow {
-    text-align: left; /* Align text to the left */
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-/* Styling h4 elements within data rows */
 .dataRow h4 {
-    margin: 0; /* Remove margin */
-    font-size: 15px; /* Font size */
+    margin: 0;
+    font-size: 17px;
+    font-weight: bold;
 }
 
-/* Styling span elements within data rows */
 .dataRow span {
-    display: block; /* Display as block element */
-    margin-bottom: 10px; /* Margin below the span */
-    font-size: 13px; /* Font size */
-    max-width: 300px; /* Maximum width */
-    overflow-wrap: break-word; /* Ensure text wraps within the span */
-    word-wrap: break-word; /* Ensure text wraps within the span */
+    font-size: 15px;
+    word-wrap: break-word;
+}
+
+.flagImage {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ced4da;
+    margin-bottom: 20px;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+li h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+li p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+li a {
+    color: #117703;
+    text-decoration: none;
+}
+
+li a:hover {
+    text-decoration: underline;
 }
