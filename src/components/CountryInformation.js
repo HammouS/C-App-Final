@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';
 import './CountryInformation.css';
 import CountryInfo from './CountryInfo';
@@ -7,21 +7,27 @@ import PropTypes from 'prop-types';
 
 const OPEN_TRIP_MAP_API_KEY = '5ae2e3f221c38a28845f05b60d6234dd138db79959e6be6cc1d1e495';
 
+
 function CountryInformation() {
     const [countryName, setCountryName] = useState('');
     const [countryData, setCountryData] = useState(null);
     const [touristLocations, setTouristLocations] = useState([]);
     const [error, setError] = useState('');
 
-    const handleSearch = () => {
-        if (!countryName.trim()) {
-            setError('The input field cannot be empty');
-            setCountryData(null);
-            setTouristLocations([]);
-            return;
-        }
+    
 
-        const finalURL = `https://restcountries.com/v3.1/name/${countryName.trim()}?fullText=true`;
+    useEffect(() => {
+        
+        const params = new URLSearchParams(window.location.search);
+        const country = params.get('country');
+        if (country) {
+            setCountryName(country);
+            fetchCountryData(country);
+        }
+    }, []);
+
+    const fetchCountryData = (name) => {
+        const finalURL = `https://restcountries.com/v3.1/name/${name.trim()}?fullText=true`;
         console.log(`Fetching country data from: ${finalURL}`);
 
         fetch(finalURL)
@@ -86,6 +92,17 @@ function CountryInformation() {
             });
     };
 
+    const handleSearch = () => {
+        if (!countryName.trim()) {
+            setError('The input field cannot be empty');
+            setCountryData(null);
+            setTouristLocations([]);
+            return;
+        }
+
+        fetchCountryData(countryName);
+    };
+
     return (
         <div className="container">
             <div className="search">
@@ -121,5 +138,6 @@ CountryInfo.propTypes = {
 TouristLocations.propTypes = {
     locations: PropTypes.array.isRequired,
 };
+
 
 export default CountryInformation;
